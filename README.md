@@ -1,2 +1,301 @@
-# git_cheatsheet
-My personal git cheatsheet where I keep some commands I find useful
+# Git cheatsheet
+I have kept this local for a long time, why not to share it? If you find a command which is not there and helped to you resolved a git issue, please send PR.
+
+Create existing branch from remote
+```
+  git checkout -b <branch> origin/<branch>
+```
+
+Replace current commit with the files currently in the directory
+```
+  git commit --amend -C HEAD
+```
+
+Change commit message
+```
+  git commit --amend
+```
+
+Take all changes to tracked files and make a commit
+```
+  git commit -all
+```
+
+What chnages are going to be committed
+```
+  git diff --cached
+```
+
+Changes files in the working tree and the last commit
+```
+  git diff head
+```
+
+Cleaning git -d directory , -x - untracked and ignored, -f forced (-n only shows files)
+```
+  git clean -dxf
+```
+
+```
+git log --oneline
+```
+
+Update all remotes
+```
+  git fetch -all
+```
+
+Reset merge to return to the stae before merging
+```
+  git reset --merge
+```
+
+Remove untracked changes in the working directory
+```
+  git stash --keep-index
+  bring back the stashed changes to the working tree
+  git stash pop
+```
+
+Difference between local master and origin/master (or any other branch)
+```
+  git diff master origin/master
+  git diff master file (on branch)
+```
+
+Git log
+```
+  git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+```
+
+List branches (-a all local and remote, -r only remote branches)
+```
+  git branch -a
+  git branch -r
+```
+
+Show status files in directories
+```
+  git st -u
+```
+
+Rebase on master local
+```
+  git rebase origin/master
+```
+
+Push new branch
+```
+  git push -u origin your_branch
+```
+
+git stash - store uncommited changes (clean local repo)
+```
+  git stash
+  git stash list
+  git stash apply (last stash otherwise explicitly cite which one)
+  git stash drop - drop last one
+  git stash clear - remove ALL
+  git stash pop
+  git stash push
+  git stash apply SHA1 - in case you dropped the stash
+```
+
+Push branch to origin
+```
+  git push origin branch_name
+```
+
+Diff file between modification and the last commit
+```
+  git diff HEAD file
+```
+
+Force push (rewrite history, don't do if shared repo or be caution)
+```
+  git push origin your_branch --force
+```
+
+Keeps history visible on graph
+```
+  git merge --no-ff
+```
+
+Remove last commit with losing files
+```
+  git reset --hard HEAD~1
+```
+
+Remove the last commit with files intact
+```
+  git reset --soft HEAD~1
+```
+
+Track remote branch (and switch to a new one)
+```
+  git checkout --track origin/daves_branch
+```
+
+Move files
+```
+  git mv FILE destination
+```
+
+Rebase before pushing (only commits which differ from upstream - master)
+```
+  git rebase -i @{u}
+```
+
+Fix conflicts during merge
+```
+  git mergetool
+```
+
+Commit deleted files
+```
+  git add -u
+```
+
+Diff any commit (example diff last commit with previous)
+```
+  git difftool HEAD HEAD~1
+```
+
+git diff labels
+```
+  git diff tag1 tag2 -- some/file/name
+```
+
+Change the last commit (=edit)
+```
+  git commit --amend
+```
+
+show tags (label)
+```
+  git tag
+```
+
+Annotated tag (not lighweight!)
+```
+  git tag -a v1.4 -m 'my version 1.4'
+```
+
+Diff staged
+```
+  git diff --cached file
+```
+
+Squash merge to master from newstuff branch
+```
+  git checkout master
+  git merge --squash newstuff
+```
+
+Show untracked files
+```
+  git ls-files --other --exclude-standard
+```
+
+Diff only files name which differs
+```
+  git diff --name-only master <branch>
+```
+
+Remove branch (newfeature) from origin
+```
+  git push origin :newfeature
+```
+
+Remove local branch
+```
+  git brach -d branch_name
+```
+
+Show branch with commits
+```
+  git show-branch
+```
+
+Show which branch was merged (be concious about squash/rebase)
+```
+  git branch -r --merged master | sed 's/ *origin\///' | grep -v 'master$'
+```
+
+Fetch tags
+```
+  git fetch -t
+```
+
+Push tag
+```
+  git push origin [tagname]
+```
+
+Github forked update (new upstream, then merge to master fork) - mbed as an example
+```
+  git remote add --track master upstream git://github.com/mbedmicro/mbed.git
+  git merge upstream/master
+```
+
+git (github) update fork
+```
+  git fetch upstream
+  git merge upstream/master
+  or
+  git pull --rebase upstream master (preffered)
+```
+
+Revert bad rebase
+```
+git reflog (this displays history, check which one you want to return to)
+git reset <sha> --hard
+```
+
+Show commit with sha (example 1e8e50996)
+```
+  git show s1e8e50996
+```
+
+Fetch a branch github (already forked)
+```
+  git remote add theirusername git@github.com:theirusername/reponame.git
+  git fetch theirusername
+  git checkout -b mynamefortheirbranch theirusername/theirbranch
+```
+
+Set tracking branch (current branch to track upstream/foo)
+```
+  git branch -u upstream/foo
+```
+
+Change author for the last commit
+```
+  git rebase -i B
+  change pick to edit in the tet
+  git commit --amend --author="author <email>"
+  git rebase --continue
+
+  or
+  git commit --ammend --author="name <email>"
+```
+
+Fetch submodules within repository
+```
+  git submodule update --init --recursive
+```
+
+Clone with all submodules
+```
+  git clone --recursive git@address
+```
+
+Add submodule
+```
+  git submodule add git@address
+```
+
+Find out where the branch started from another branch
+```
+  git merge-base HEAD BRANCH_YOU_BRANCHED_FROM
+```
