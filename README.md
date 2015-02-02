@@ -299,3 +299,16 @@ Find out where the branch started from another branch
 ```
   git merge-base HEAD BRANCH_YOU_BRANCHED_FROM
 ```
+
+To create a patch from the current master, from the SHA up to the top of HEAD, all in one patch. If you don't supply --stdout option, will create a patch for each commit
+```
+  git format-patch master --stdout > my.patch
+```
+
+To apply patch (no signoff involved)
+```
+  git apply --check my.patch
+  git apply my.patch
+```
+
+
