@@ -311,4 +311,7 @@ To apply patch (no signoff involved)
   git apply my.patch
 ```
 
-
+Push local branch to remote branch with different branch name
+```
+git push origin local-name:remote-name
+```
