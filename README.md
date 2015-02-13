@@ -302,7 +302,7 @@ Find out where the branch started from another branch
 
 To create a patch from the current master, from the SHA up to the top of HEAD, all in one patch. If you don't supply --stdout option, will create a patch for each commit
 ```
-  git format-patch master --stdout > my.patch
+  git format-patch <sha> --stdout > my.patch
 ```
 
 To apply patch (no signoff involved)
