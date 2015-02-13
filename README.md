@@ -181,6 +181,19 @@ Annotated tag (not lighweight!)
   git tag -a v1.4 -m 'my version 1.4'
 ```
 
+Lightweight tags
+```
+  git tag my_version
+```
+
+Delete the tag locally
+```
+  git tag -d my_version
+  # this one delets tag my_version from the remote origin
+  git push origin :refs/tags/my_version
+```
+
+
 Diff staged
 ```
   git diff --cached file
