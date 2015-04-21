@@ -328,3 +328,8 @@ Push local branch to remote branch with different branch name
 ```
 git push origin local-name:remote-name
 ```
+
+Update remote url link
+```
+git remote set-url origin https://github.com/USERNAME/OTHERREPOSITORY.git
+```
