@@ -318,10 +318,15 @@ To create a patch from the current master, from the SHA up to the top of HEAD, a
   git format-patch <sha> --stdout > my.patch
 ```
 
-To apply patch (no signoff involved)
+To apply patch (no signoff involved), neither commits
 ```
   git apply --check my.patch
   git apply my.patch
+```
+
+To sign off and keep the log
+```
+git am < my.patch
 ```
 
 Push local branch to remote branch with different branch name
