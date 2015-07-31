@@ -251,6 +251,16 @@ Github forked update (new upstream, then merge to master fork) - mbed as an exam
   git merge upstream/master
 ```
 
+Change url for upstream remote
+```
+  git remote set-url upstream address
+```
+
+Rename remote
+```
+  git remote rename origin destination
+```
+
 git (github) update fork
 ```
   git fetch upstream
