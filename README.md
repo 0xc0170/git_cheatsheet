@@ -348,3 +348,15 @@ Update remote url link
 ```
 git remote set-url origin https://github.com/USERNAME/OTHERREPOSITORY.git
 ```
+
+Copy files from one repo to another with history
+```
+git log --pretty=email --patch-with-stat --reverse -- path/to/file_or_folder | (cd /path/to/new_repository && git am)
+```
+
+Mirror a repo to a new one (clone with all branches, tags)
+```
+git clone --bare old_repo.git
+cd old-repo.git
+git push --mirror new_repo.git
+```
