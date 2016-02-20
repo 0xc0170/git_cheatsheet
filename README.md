@@ -133,7 +133,7 @@ Remove the last commit with files intact
 
 Track remote branch (and switch to a new one)
 ```
-  git checkout --track origin/daves_branch
+  git checkout --track -b origin/daves_branch
 ```
 
 Move files
