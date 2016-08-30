@@ -326,6 +326,8 @@ Find out where the branch started from another branch
 To create a patch from the current master, from the SHA up to the top of HEAD, all in one patch. If you don't supply --stdout option, will create a patch for each commit
 ```
   git format-patch <sha> --stdout > my.patch
+  # use --relative for relative paths
+  # or -o for output directory
 ```
 
 To apply patch (no signoff involved), neither commits
@@ -337,6 +339,12 @@ To apply patch (no signoff involved), neither commits
 To sign off and keep the log
 ```
 git am < my.patch
+# use --directory for directory where it should be applied
+
+# for windows, as patch/*.patch does not work, use find:
+find ./patch/*.patch | xargs git am
+
+# if there are conflicts use -3, then run git mergetool to resolve conflicts
 ```
 
 Push local branch to remote branch with different branch name
