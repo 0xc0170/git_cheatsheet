@@ -372,3 +372,8 @@ git clone --bare old_repo.git
 cd old-repo.git
 git push --mirror new_repo.git
 ```
+
+Find out when was a file/a folder deleted
+```
+git log -1 -- file/folder
+```
