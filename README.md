@@ -377,3 +377,11 @@ Find out when was a file/a folder deleted
 ```
 git log -1 -- file/folder
 ```
+
+If forced to Github PRs but there were changes, git reflog is no help, use git refs to recover. The commands create a new branch in a repo (where PR come from. Use this new branch as a new point you can reset to or just cherry pick changes from)
+
+```
+curl -u <owner> https://api.github.com/repos/<owner>/<repo>/events
+curl -u <owner> -X POST -d "{\"ref\":\"refs/heads/<new-branch>\", \"sha\":\"<sha found in first step>\"}" https://api.github.com/repos/<owner>/<repo>/git/refs
+```
+
